@@ -14,7 +14,200 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      businesses: {
+        Row: {
+          created_at: string
+          id: string
+          location: string | null
+          logo_url: string | null
+          name: string
+          preferred_languages: string[] | null
+          target_audience: string | null
+          type: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          location?: string | null
+          logo_url?: string | null
+          name: string
+          preferred_languages?: string[] | null
+          target_audience?: string | null
+          type: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          location?: string | null
+          logo_url?: string | null
+          name?: string
+          preferred_languages?: string[] | null
+          target_audience?: string | null
+          type?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      generated_content: {
+        Row: {
+          business_id: string | null
+          content_type: string
+          created_at: string
+          festival_context: string | null
+          generated_text: string
+          id: string
+          is_favorite: boolean | null
+          key_message: string | null
+          language: string
+          product_service: string
+          target_audience: string | null
+          tone: string
+          user_id: string
+        }
+        Insert: {
+          business_id?: string | null
+          content_type: string
+          created_at?: string
+          festival_context?: string | null
+          generated_text: string
+          id?: string
+          is_favorite?: boolean | null
+          key_message?: string | null
+          language: string
+          product_service: string
+          target_audience?: string | null
+          tone: string
+          user_id: string
+        }
+        Update: {
+          business_id?: string | null
+          content_type?: string
+          created_at?: string
+          festival_context?: string | null
+          generated_text?: string
+          id?: string
+          is_favorite?: boolean | null
+          key_message?: string | null
+          language?: string
+          product_service?: string
+          target_audience?: string | null
+          tone?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "generated_content_business_id_fkey"
+            columns: ["business_id"]
+            isOneToOne: false
+            referencedRelation: "businesses"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      profiles: {
+        Row: {
+          business_name: string | null
+          business_type: string | null
+          created_at: string
+          email: string
+          id: string
+          location: string | null
+          monthly_generations_used: number | null
+          subscription_tier: string | null
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          business_name?: string | null
+          business_type?: string | null
+          created_at?: string
+          email: string
+          id?: string
+          location?: string | null
+          monthly_generations_used?: number | null
+          subscription_tier?: string | null
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          business_name?: string | null
+          business_type?: string | null
+          created_at?: string
+          email?: string
+          id?: string
+          location?: string | null
+          monthly_generations_used?: number | null
+          subscription_tier?: string | null
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      templates: {
+        Row: {
+          business_type: string
+          content_type: string
+          created_at: string
+          id: string
+          language: string
+          prompt_template: string
+          sample_input: Json | null
+          template_name: string
+        }
+        Insert: {
+          business_type: string
+          content_type: string
+          created_at?: string
+          id?: string
+          language: string
+          prompt_template: string
+          sample_input?: Json | null
+          template_name: string
+        }
+        Update: {
+          business_type?: string
+          content_type?: string
+          created_at?: string
+          id?: string
+          language?: string
+          prompt_template?: string
+          sample_input?: Json | null
+          template_name?: string
+        }
+        Relationships: []
+      }
+      usage_analytics: {
+        Row: {
+          created_at: string
+          generation_count: number | null
+          id: string
+          month_year: string
+          subscription_tier: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          generation_count?: number | null
+          id?: string
+          month_year: string
+          subscription_tier: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          generation_count?: number | null
+          id?: string
+          month_year?: string
+          subscription_tier?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
